@@ -37,15 +37,19 @@ firebase.database().ref('/nextid/').once('value').then(snap => {
 });
 render();
 
-function Book(title, author, numPages, readFlag, lent) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.read = readFlag;
-    this.lent = lent;
-    this.id = nextId;
-    nextId++;
-    this.info = function () {
+class Book {
+
+    constructor(title, author, numPages, readFlag, lent) {
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.read = readFlag;
+        this.lent = lent;
+        this.id = nextId;
+        nextId++;
+
+    }
+    info() {
         return `${this.title} by ${this.author}, ${this.numPages} pages, ${this.read ? "has been read" : "not read yet"}`
     }
 }
